@@ -1,19 +1,19 @@
-//
-//  ContentView.swift
-//  BodyManage
-//
-//  Created by 松川知憲 on 2024/01/20.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
+                .font(.largeTitle)
+                .fontWeight(.regular)
+            HStack {
+                Text(/*@START_MENU_TOKEN@*/"Placeholder"/*@END_MENU_TOKEN@*/)
+                Spacer()
+                Text(/*@START_MENU_TOKEN@*/"Placeholder"/*@END_MENU_TOKEN@*/)
+            }
         }
         .padding()
     }
