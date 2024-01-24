@@ -2,16 +2,22 @@ import SwiftUI
 
 struct InitialView: View {
     
-    @State var name = ""
-    @State var date = Date()
+    @State private var name = ""
+    @State private var date = Date()
+    @State private var weight = ""
+    @State private var tall = ""
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 10) {
-            userNameView()
-            genderView()
-            birthdayView()
-            Spacer()
-        }.padding(10)
+        NavigationView {
+            VStack(alignment: .leading, spacing: 10) {
+                userNameView()
+                genderView()
+                birthdayView()
+                currentWeight()
+                currentTall()
+                Spacer()
+            }.navigationTitle("初期設定").padding(10)
+        }
     }
     
     private func userNameView() -> some View {
@@ -36,6 +42,25 @@ struct InitialView: View {
         return VStack(alignment: .leading) {
             Text("誕生日")
             DatePicker("誕生日", selection: $date, displayedComponents: [.date]).labelsHidden()
+        }
+    }
+    
+    private func currentWeight() -> some View {
+        return VStack(alignment: .leading) {
+            Text("体重(kg)")
+            TextField("例：50.5kg", text: $weight)
+                .keyboardType(.numberPad)
+                .textFieldStyle(.roundedBorder)
+            
+        }
+    }
+    
+    private func currentTall() -> some View {
+        return VStack(alignment: .leading) {
+            Text("身長(cm)")
+            TextField("例：170cm", text: $tall)
+                .keyboardType(.numberPad)
+                .textFieldStyle(.roundedBorder)
         }
     }
     
