@@ -4,17 +4,19 @@ struct InitialView: View {
     
     @State private var name = ""
     @State private var date = Date()
+    @State private var gender = 1
     @State private var weight = ""
     @State private var tall = ""
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack(alignment: .leading, spacing: 10) {
                 userNameView()
                 genderView()
                 birthdayView()
                 currentWeight()
                 currentTall()
+                nextButton()
                 Spacer()
             }.navigationTitle("初期設定").padding(10)
         }
@@ -31,10 +33,10 @@ struct InitialView: View {
     private func genderView() -> some View {
         return VStack(alignment: .leading) {
             Text("性別")
-            HStack {
-                radioButtonView(onClick: {}, name: "男")
-                radioButtonView(onClick: {}, name: "女")
-            }
+            Picker(selection: $gender, label: Text("")) {
+                Text("男").tag(1)
+                Text("女").tag(2)
+            }.frame(width: 60, height: 40).pickerStyle(.menu)
         }
     }
     
@@ -64,21 +66,14 @@ struct InitialView: View {
         }
     }
     
-    private func radioButtonView(
-        onClick: () -> Void,
-        name: String
-    ) -> some View {
-        return HStack {
-            Button(
-                action: {
-                    
-                },
-                label: {
-                    Image(systemName: "button.programmable")
-                }
-            )
-            Text(name)
-        }
+    private func nextButton() -> some View {
+        return Button(action: {
+            NavigationLink("完了") {
+                
+            }
+        }, label: {
+            Text("保存")
+        })
     }
 }
 

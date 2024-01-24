@@ -4,7 +4,16 @@ import SwiftUI
 struct BodyManageApp: App {
     var body: some Scene {
         WindowGroup {
-            InitialView()
+            NavigationStack {
+                HomeView()
+                NavigationLink("初期設定", destination: InitialView())
+            }
         }
+    }
+}
+
+struct HomeView: View {
+    var body: some View {
+        Text("ホームだよ")
     }
 }
